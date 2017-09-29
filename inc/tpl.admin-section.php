@@ -38,6 +38,24 @@ $settings = wp_parse_args( $settings, [
 	<tr><th colspan="2" style="text-align:left;">
 			<h3><?php _e( 'Freemius testimonials', 'fs-testimonial' ) ?> &ndash; <?php _e( 'API credentials', 'fs-testimonial' ) ?></h3>
 			<p><?php printf( __( "Get your developer credentials from %s Freemius Dashboard > My Profile %s", 'fs-testimonial' ), "<a href='https://dashboard.freemius.com/#/profile/'>", '</a>' ) ?></p>
+			<?php
+			$fs_testimonial_clear_cache_url = admin_url( 'options-general.php?fs-testimonial-clear-cache=' . wp_create_nonce( 'fs-testimonial-clear-cache' ) );
+
+			if ( ! empty( $_GET['fs-testimonial-clear-cache'] ) && wp_verify_nonce( $_GET['fs-testimonial-clear-cache'], 'fs-testimonial-clear-cache' ) ) {
+				global $wpdb;
+				$wpdb->query( "DELETE FROM `$wpdb->options` WHERE `option_name` LIKE ('_transient_fs_testimonials_%')" );
+				?>
+				<div class="notice notice-success is-dismissible">
+					<p><?php _e( 'Freemius Testimonials cache cleared successfully.' ); ?></p>
+				</div>
+				<?php
+			} else {
+				?>
+				<a href="<?php echo $fs_testimonial_clear_cache_url ?>"
+					 class="button"><?php _e( 'Clear testimonials cache', 'fs-testimonial' ) ?></a>
+				<?php
+			}
+			?>
 		</th></tr>
 
 	<tr>
