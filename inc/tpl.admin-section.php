@@ -20,7 +20,7 @@ $settings = wp_parse_args( $settings, [
 	</th></tr>
 	<tr>
 		<th scope="row">
-			<?php _e( 'To show all shortcodes', 'fs-testimonial' ) ?>
+			<?php _e( 'To show all testimonials', 'fs-testimonial' ) ?>
 		</th>
 		<td>
 			<code>[freemius-testimonials plugin=999]</code>
