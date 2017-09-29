@@ -116,7 +116,7 @@ class FS_Testimonials {
 	}
 
 	public function scripts() {
-		wp_enqueue_style( 'fmt-script', plugin_dir_url( __FILE__ ) . '/front.css', '' );
+		wp_enqueue_style( 'fmt-script', plugin_dir_url( __FILE__ ) . '/assets/front.css', '' );
 	}
 
 	/**
@@ -141,7 +141,7 @@ class FS_Testimonials {
 		$testimonials = get_transient( "fsrevs_testimonials_$params[plugin]" );
 		if ( empty( $testimonials ) ) {
 			$testimonials = self::get_testimonials( $params['plugin'] );
-			if ( $testimonials && ! empty( $testimonials->error ) ) {
+			if ( $testimonials && empty( $testimonials->error ) ) {
 				set_transient( "fsrevs_testimonials_$params[plugin]", $testimonials, DAY_IN_SECONDS * 7 );
 			}
 		}
