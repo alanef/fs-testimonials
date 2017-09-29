@@ -67,6 +67,7 @@ class FS_Testimonials {
 
 		add_action( 'admin_init', [ $this, 'admin' ] );
 
+		add_action( 'wp_enqueue_scripts', [ $this, 'scripts' ] );
 	}
 
 	public function admin() {
@@ -112,6 +113,10 @@ class FS_Testimonials {
 			</tr>
 		</table>
 		<?php
+	}
+
+	public function scripts() {
+		wp_enqueue_style( 'fmt-script', plugin_dir_url( __FILE__ ) . '/front.css', '' );
 	}
 
 	/**
