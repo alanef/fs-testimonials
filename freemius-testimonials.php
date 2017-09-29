@@ -31,7 +31,7 @@ class FS_Testimonials {
 	 * @param int $plugin Plugin id
 	 * @return array|mixed|null|object|object[]|string
 	 */
-	static function get_reviews( $plugin ) {
+	static function get_testimonials( $plugin ) {
 
 		if ( ! class_exists( 'Freemius_API' ) ) {
 			include 'freemius/Freemius.php';
@@ -122,6 +122,12 @@ class FS_Testimonials {
 		ob_start();
 
 		$reviews = get_transient( "fsrevs_reviews_$params[plugin]" );
+		if ( empty( $reviews ) ) {
+			$reviews = self::get_testimonials( $params['plugin'] );
+			if ( $reviews ) {
+				set_transient( "fsrevs_reviews_$params[plugin]", $reviews, DAY_IN_SECONDS * 7 );
+			}
+		}
 
 		var_dump( $reviews );
 
