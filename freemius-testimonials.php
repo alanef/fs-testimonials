@@ -54,7 +54,7 @@ class FS_Testimonials {
 		);
 
 		// Get all products.
-		$result = $api->Api( "/plugins/$plugin/testimonials.json?is_featured=true" );
+		$result = $api->Api( "/plugins/$plugin/reviews.json?is_featured=true" );
 
 		return $result;
 	}
@@ -66,6 +66,7 @@ class FS_Testimonials {
 		add_shortcode( 'freemius-testimonials', [ $this, 'testimonials' ] );
 
 		add_action( 'admin_init', [ $this, 'admin' ] );
+
 	}
 
 	public function admin() {
@@ -75,13 +76,13 @@ class FS_Testimonials {
 		add_settings_section(
 			'fstm_general_section',
 			__( 'Freemius testimonials', 'fs-testimonial' ),
-			[ $this, 'section_render' ],
+			[ $this, 'admin_section_render' ],
 			'general'
 		);
 
 	}
 
-	public function section_render() {
+	public function admin_section_render() {
 		$settings = get_option( 'fstm_credentials', [] );
 
 		$settings = wp_parse_args( $settings, [
@@ -135,7 +136,7 @@ class FS_Testimonials {
 		$testimonials = get_transient( "fsrevs_testimonials_$params[plugin]" );
 		if ( empty( $testimonials ) ) {
 			$testimonials = self::get_testimonials( $params['plugin'] );
-			if ( $testimonials ) {
+			if ( $testimonials && ! empty( $testimonials->error ) ) {
 				set_transient( "fsrevs_testimonials_$params[plugin]", $testimonials, DAY_IN_SECONDS * 7 );
 			}
 		}
@@ -152,8 +153,8 @@ class FS_Testimonials {
 
 		} else {
 
-			if ( $testimonials && $testimonials->testimonials ) {
-				$this->render_testimonials( $testimonials->testimonials, $compress );
+			if ( $testimonials && $testimonials->reviews ) {
+				$this->render_testimonials( $testimonials->reviews, $compress );
 			}
 		}
 
