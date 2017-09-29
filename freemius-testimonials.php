@@ -3,10 +3,11 @@
 Plugin Name: Freemius Testimonials
 Description: Shows plugins/theme testimonials from Freemius
 Version: 1.0
-Author: Shramee Srivastav
-Author URI: http://shramee.com
-Author Email: shramee.srivastav@gmail.com
+Plugin URI: https://pootlepress.com/freemius-testimonials
+Author: Pootlepress
+Author URI: https://pootlepress.com/
 Domain: fs-testimonial
+@developer shramee.srivastav@gmail.com
 */
 
 class FS_Testimonials {
@@ -110,11 +111,11 @@ class FS_Testimonials {
 			$compress = 'compress';
 		}
 
-		$testimonials = get_transient( "fsrevs_testimonials_$params[plugin]" );
+		$testimonials = get_transient( "fs_testimonials_$params[plugin]" );
 		if ( empty( $testimonials ) ) {
 			$testimonials = self::get_testimonials( $params['plugin'] );
 			if ( $testimonials && empty( $testimonials->error ) ) {
-				set_transient( "fsrevs_testimonials_$params[plugin]", $testimonials, DAY_IN_SECONDS * 7 );
+				set_transient( "fs_testimonials_$params[plugin]", $testimonials, DAY_IN_SECONDS * 7 );
 			}
 		}
 
