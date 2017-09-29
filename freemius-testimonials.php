@@ -34,7 +34,7 @@ class FS_Testimonials {
 	static function get_testimonials( $plugin ) {
 
 		if ( ! class_exists( 'Freemius_API' ) ) {
-			include 'freemius/Freemius.php';
+			include 'inc/freemius/Freemius.php';
 		}
 
 		$settings = get_option( 'fstm_credentials', [] );
@@ -76,7 +76,7 @@ class FS_Testimonials {
 
 		add_settings_section(
 			'fstm_general_section',
-			__( 'Freemius testimonials', 'fs-testimonial' ),
+			'',
 			[ $this, 'admin_section_render' ],
 			'general'
 		);
@@ -84,35 +84,7 @@ class FS_Testimonials {
 	}
 
 	public function admin_section_render() {
-		$settings = get_option( 'fstm_credentials', [] );
-
-		$settings = wp_parse_args( $settings, [
-			'dev_id'     => '',
-			'dev_public' => '',
-			'dev_secret' => '',
-		] );
-		?>
-		<table class="form-table">
-			<tr>
-				<th scope="row"><?php _e( 'Developer ID', 'fs-testimonial' ) ?></th>
-				<td>
-					<input class="regular-text" type="text" name='fstm_credentials[dev_id]' value="<?php echo $settings['dev_id'] ?>">
-				</td>
-			</tr>
-			<tr>
-				<th scope="row"><?php _e( 'Developer Public Key', 'fs-testimonial' ) ?></th>
-				<td>
-					<input class="regular-text" type="text" name='fstm_credentials[dev_public]' value="<?php echo $settings['dev_public'] ?>">
-				</td>
-			</tr>
-			<tr>
-				<th scope="row"><?php _e( 'Developer Secret Key', 'fs-testimonial' ) ?></th>
-				<td>
-					<input class="regular-text" type="text" name='fstm_credentials[dev_secret]' value="<?php echo $settings['dev_secret'] ?>">
-				</td>
-			</tr>
-		</table>
-		<?php
+		include "inc/tpl.admin-section.php";
 	}
 
 	public function scripts() {
