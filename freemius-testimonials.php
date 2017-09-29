@@ -11,14 +11,52 @@ Domain: fs-testimonial
 
 class FS_Testimonials {
 
+	/** @var FS_Testimonials Instance */
 	private static $_instance;
 
+	/**
+	 * Get instance
+	 * @return FS_Testimonials Instance
+	 */
 	public static function instance() {
 		if ( ! self::$_instance ) {
 			self::$_instance = new self();
 		}
 
 		return self::$_instance;
+	}
+
+	/**
+	 * Returns plugin reviews
+	 * @param int $plugin Plugin id
+	 * @return array|mixed|null|object|object[]|string
+	 */
+	static function get_reviews( $plugin ) {
+
+		if ( ! class_exists( 'Freemius_API' ) ) {
+			include 'freemius/Freemius.php';
+		}
+
+		$settings = get_option( 'fstm_credentials', [] );
+
+		if ( ! $settings ) {
+			return (object) [
+				'error' => [ 'message' => 'API credentials not set.', ]
+			];
+		}
+
+		// Init SDK.
+		$api = new Freemius_Api(
+			'developer', //scope
+			$settings['dev_id'],
+			$settings['dev_public'],
+			$settings['dev_secret']
+		);
+
+		// Get all products.
+		$result = $api->Api( "/plugins/$plugin/reviews.json?is_featured=true" );
+
+		return $result;
 	}
 
 	/**
@@ -81,7 +119,14 @@ class FS_Testimonials {
 	 * @return string
 	 */
 	function testimonials( $params = [] ) {
-		echo 'Shortcode works!';
+		ob_start();
+
+		$reviews = get_transient( "fsrevs_reviews_$params[plugin]" );
+
+		var_dump( $reviews );
+
+
+		return ob_get_clean();
 	}
 
 }
