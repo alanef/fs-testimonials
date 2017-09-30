@@ -31,7 +31,7 @@ Installing "Freemius testimonial" can be done either by searching for "Freemius 
 
 = How can I show the testimonials? =
 
-First you need to set your Freemius API credentials, this can be done in `WordPress admin area` > `Settings` > `General` > `Freemius testimonials – API credentials`
+First you need to set your Freemius API credentials, this can be done in `WordPress admin area` > `Settings` > `General` > `Testimonials for Freemius – API credentials`
 After that, just use this shortcode **after changing 999 with your plugin/theme ID** `[freemius-testimonials plugin=999]`
 
 = How can I use that expandable drawer like thingy? =

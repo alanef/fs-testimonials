@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Freemius Testimonials
+Plugin Name: Testimonials for Freemius
 Description: Shows plugins/theme testimonials from Freemius
 Version: 1.0
 Plugin URI: https://pootlepress.com/freemius-testimonials
