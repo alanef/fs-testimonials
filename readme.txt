@@ -1,4 +1,4 @@
-=== Freemius testimonial ===
+=== Testimonials for Freemius ===
 
 Contributors: pootlepress, shramee, jamesmarsland
 Plugin Name: Freemius testimonial
