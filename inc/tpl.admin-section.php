@@ -3,13 +3,13 @@
  * Admin settings section
  */
 
-$settings = get_option( 'fstm_credentials', [] );
+$settings = get_option( 'fstm_credentials', array() );
 
-$settings = wp_parse_args( $settings, [
-'dev_id'     => '',
-'dev_public' => '',
-'dev_secret' => '',
-] );
+$settings = wp_parse_args( $settings, array(
+	'dev_id'     => '',
+	'dev_public' => '',
+	'dev_secret' => '',
+) );
 ?>
 <div id="freemius-testimonials"></div>
 

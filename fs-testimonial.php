@@ -38,12 +38,12 @@ class FS_Testimonials {
 			include 'inc/freemius/Freemius.php';
 		}
 
-		$settings = get_option( 'fstm_credentials', [] );
+		$settings = get_option( 'fstm_credentials', array() );
 
 		if ( ! $settings ) {
-			return (object) [
-				'error' => [ 'message' => 'API credentials not set.', ]
-			];
+			return (object) array(
+				'error' => array( 'message' => 'API credentials not set.', )
+			);
 		}
 
 		// Init SDK.
@@ -64,11 +64,11 @@ class FS_Testimonials {
 	 * FS_Testimonials constructor.
 	 */
 	public function __construct() {
-		add_shortcode( 'freemius-testimonials', [ $this, 'testimonials' ] );
+		add_shortcode( 'freemius-testimonials', array( $this, 'testimonials' ) );
 
-		add_action( 'admin_init', [ $this, 'admin' ] );
+		add_action( 'admin_init', array( $this, 'admin' ) );
 
-		add_action( 'wp_enqueue_scripts', [ $this, 'scripts' ] );
+		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
 	}
 
 	public function admin() {
@@ -78,7 +78,7 @@ class FS_Testimonials {
 		add_settings_section(
 			'fstm_general_section',
 			'',
-			[ $this, 'admin_section_render' ],
+			array( $this, 'admin_section_render' ),
 			'general'
 		);
 
@@ -89,7 +89,7 @@ class FS_Testimonials {
 	}
 
 	public function scripts() {
-		wp_enqueue_style( 'fmt-script', plugin_dir_url( __FILE__ ) . '/assets/front.css', '' );
+		wp_enqueue_style( 'fmt-script', plugin_dir_url( __FILE__ ) . '/assets/front.css', '', '1.0.0' );
 	}
 
 	/**
@@ -97,9 +97,9 @@ class FS_Testimonials {
 	 * @param array $params
 	 * @return string
 	 */
-	function testimonials( $params = [] ) {
+	function testimonials( $params = array() ) {
 
-		$params = $params ? $params : [];
+		$params = $params ? $params : array();
 
 		$compress = '';
 

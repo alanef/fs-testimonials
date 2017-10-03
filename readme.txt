@@ -53,5 +53,5 @@ You can use this shortcode after replacing 999 with your plugin ID `[freemius-te
 == Changelog ==
 
 = 1.0.0 =
-* 2017-10-05
+* 2017-10-03
 * Initial release. It's alive!
