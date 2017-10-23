@@ -25,7 +25,7 @@
 		padding-bottom: 2em;
 		.fs-testimonials-outer-wrap {
 			overflow: hidden;
-			transition: all 0.7s;
+			transition: all 1.6s;
 		}
 		&:not( .compress-expanded ) {
 			.fs-testimonials-outer-wrap {
@@ -37,7 +37,7 @@
 				content: attr( data-less );
 			}
 			.fs-testimonials-outer-wrap {
-				max-height: 2599px;
+				max-height: 5999px;
 			}
 		}
 	}
