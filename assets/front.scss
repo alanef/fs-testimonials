@@ -6,18 +6,17 @@
 	position: relative;
 	color: #655;
 
-
 	.compress-toggle {
 		display: inline-block;
 		background: #fff;
 		position: absolute;
 		top: 100%;
 		left: 50%;
-		transform: translate( -50%, -50% );
+		transform: translate(-50%, -50%);
 		border: 1px solid #ccc;
 		padding: 0.7em 1.1em;
 		&:before {
-			content: attr( data-more );
+			content: attr(data-more);
 		}
 	}
 
@@ -34,7 +33,7 @@
 		}
 		&.compress-expanded {
 			.compress-toggle:before {
-				content: attr( data-less );
+				content: attr(data-less);
 			}
 			.fs-testimonials-outer-wrap {
 				max-height: 5999px;
@@ -43,8 +42,10 @@
 	}
 
 	.fs-testimonials-wrap {
-		column-count: 3;
-		column-gap: 0;
+		> div {
+			width: 33.3%;
+			float: left;
+		}
 	}
 
 	&::after {
@@ -61,8 +62,8 @@
 	}
 	.testimonial {
 		-webkit-column-break-inside: avoid; /* Chrome, Safari */
-		page-break-inside: avoid;           /* Theoretically FF 20+ */
-		break-inside: avoid-column;         /* IE 11 */
+		page-break-inside: avoid; /* Theoretically FF 20+ */
+		break-inside: avoid-column; /* IE 11 */
 		width: 100%;
 		text-align: center;
 		float: left;
@@ -95,9 +96,9 @@
 			position: relative;
 			text-align: center;
 			margin: 20px;
-			-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
-			-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15), -1px 0 0 rgba(0,0,0,0.03), 1px 0 0 rgba(0,0,0,0.03), 0 1px 0 rgba(0,0,0,0.12);
-			box-shadow: 0 1px 1px rgba(0,0,0,0.15), -1px 0 0 rgba(0,0,0,0.03), 1px 0 0 rgba(0,0,0,0.03), 0 1px 0 rgba(0,0,0,0.12);
+			-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), -1px 0 0 rgba(0, 0, 0, 0.03), 1px 0 0 rgba(0, 0, 0, 0.03), 0 1px 0 rgba(0, 0, 0, 0.12);
+			-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), -1px 0 0 rgba(0, 0, 0, 0.03), 1px 0 0 rgba(0, 0, 0, 0.03), 0 1px 0 rgba(0, 0, 0, 0.12);
+			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), -1px 0 0 rgba(0, 0, 0, 0.03), 1px 0 0 rgba(0, 0, 0, 0.03), 0 1px 0 rgba(0, 0, 0, 0.12);
 			border-bottom: 5px solid #DDD;
 			&::before {
 				font-family: "Open Sans", sans-serif;
@@ -180,6 +181,10 @@
 	#fs-testimonials {
 		.fs-testimonials-wrap {
 			column-count: 2;
+			> div {
+				display: inline;
+				float: none;
+			}
 		}
 	}
 }

@@ -136,7 +136,6 @@ class FS_Testimonials {
 				$reviews = $testimonials->reviews;
 				if ( ! empty( $params['order'] ) ) {
 					$GLOBALS['freemius_testimonials_order'] = array_flip( preg_split( "/[^0-9]+/", $params['order'] ) );
-					var_dump( $GLOBALS['freemius_testimonials_order'] );
 					usort( $reviews, function ( $a, $b ) {
 						$order = $GLOBALS['freemius_testimonials_order'];
 						$ordera = isset( $order[ $a->id ] ) ? $order[ $a->id ] : 9999;
@@ -170,6 +169,16 @@ class FS_Testimonials {
 					?>
 				</div>
 			</div>
+			<?php if ( isset( $_GET['fs-testimonial-ids'] ) && current_user_can( 'edit_posts' ) ) { ?>
+				<style>
+					#fs-testimonials div[data-id]:after {
+						content: attr( data-id );
+						position: absolute;
+						top: 3px;
+						right: 7px;
+					}
+				</style>
+			<?php } ?>
 			<?php if ( $compress ) { ?>
 				<div
 					onclick="jQuery(this).closest('#fs-testimonials').toggleClass('compress-expanded')" class="compress-toggle"
@@ -185,8 +194,8 @@ class FS_Testimonials {
 		$r->picture = $r->picture ? $r->picture : 'https://0.gravatar.com/avatar/65e687353c07dd37523cdb8581cec4a9?s=128&d=mm&f=y&r=g';
 		ob_start();
 		?>
-		<div class="testimonial" data-id="<?php echo $r->id ?>">
-			<div class="quote-container">
+		<div class="testimonial">
+			<div class="quote-container" data-id="<?php echo $r->id ?>">
 				<ul class="rate">
 					<?php
 					for ( $i = 1; $i < $r->rate + 1; $i += 20 ) {
