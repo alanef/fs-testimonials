@@ -90,7 +90,7 @@ class FS_Testimonials {
 
 	public function scripts() {
 		wp_enqueue_style( 'fmt-style', plugin_dir_url( __FILE__ ) . '/assets/front.css', '', '1.0.0' );
-		wp_enqueue_script( 'fmt-script', plugin_dir_url( __FILE__ ) . '/assets/front.css', '', '1.0.0' );
+//		wp_enqueue_script( 'fmt-script', plugin_dir_url( __FILE__ ) . '/assets/front.js', '', '1.0.0' );
 	}
 
 	/**
