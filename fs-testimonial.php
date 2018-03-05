@@ -133,7 +133,18 @@ class FS_Testimonials {
 		} else {
 
 			if ( $testimonials && $testimonials->reviews ) {
-				$this->render_testimonials( $testimonials->reviews, $compress );
+				$reviews = $testimonials->reviews;
+				if ( ! empty( $params['order'] ) ) {
+					$GLOBALS['freemius_testimonials_order'] = array_flip( preg_split( "/[^0-9]+/", $params['order'] ) );
+					var_dump( $GLOBALS['freemius_testimonials_order'] );
+					usort( $reviews, function ( $a, $b ) {
+						$order = $GLOBALS['freemius_testimonials_order'];
+						$ordera = isset( $order[ $a->id ] ) ? $order[ $a->id ] : 9999;
+						$orderb = isset( $order[ $b->id ] ) ? $order[ $b->id ] : 9999;
+						return $ordera > $orderb;
+					} );
+				}
+				$this->render_testimonials( $reviews, $compress );
 			}
 		}
 
@@ -174,7 +185,7 @@ class FS_Testimonials {
 		$r->picture = $r->picture ? $r->picture : 'https://0.gravatar.com/avatar/65e687353c07dd37523cdb8581cec4a9?s=128&d=mm&f=y&r=g';
 		ob_start();
 		?>
-		<div class="testimonial" data-index="6" data-id="<?php echo $r->id ?>" aria-hidden="true">
+		<div class="testimonial" data-id="<?php echo $r->id ?>">
 			<div class="quote-container">
 				<ul class="rate">
 					<?php
@@ -183,7 +194,7 @@ class FS_Testimonials {
 					}
 					?>
 				</ul>
-				<h4 title="Just perfect!"><?php echo $r->title ?></h4>
+				<h4><?php echo $r->title ?></h4>
 				<blockquote><p><?php echo $r->text ?></p></blockquote>
 				<img class="profile-pic" src="<?php echo $r->picture ?>">
 			</div>
