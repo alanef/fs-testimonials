@@ -89,7 +89,8 @@ class FS_Testimonials {
 	}
 
 	public function scripts() {
-		wp_enqueue_style( 'fmt-script', plugin_dir_url( __FILE__ ) . '/assets/front.css', '', '1.0.0' );
+		wp_enqueue_style( 'fmt-style', plugin_dir_url( __FILE__ ) . '/assets/front.css', '', '1.0.0' );
+		wp_enqueue_script( 'fmt-script', plugin_dir_url( __FILE__ ) . '/assets/front.css', '', '1.0.0' );
 	}
 
 	/**
@@ -146,9 +147,16 @@ class FS_Testimonials {
 			<div class="fs-testimonials-outer-wrap">
 				<div class="fs-testimonials-wrap">
 					<?php
+					$divs = [];
+					$i = 0;
 					foreach ( $testimonials as $r ) {
-						$this->testimonial_html( $r );
-					} ?>
+						$divs[ $i ++ % 3 ] .= $this->testimonial_html( $r );
+					}
+
+					echo "<div>$divs[0]</div>";
+					echo "<div>$divs[1]</div>";
+					echo "<div>$divs[2]</div>";
+					?>
 				</div>
 			</div>
 			<?php if ( $compress ) { ?>
@@ -163,9 +171,10 @@ class FS_Testimonials {
 	}
 
 	function testimonial_html( $r ) {
-		$r->picture = $r->picture ? $r->picture : 'http://1.gravatar.com/avatar/d28eae9f3dcdcba08ac685b112b006aa?s=128&d=mm&f=y&r=g';
+		$r->picture = $r->picture ? $r->picture : 'https://0.gravatar.com/avatar/65e687353c07dd37523cdb8581cec4a9?s=128&d=mm&f=y&r=g';
+		ob_start();
 		?>
-		<div class="testimonial" data-index="6" data-id="145" aria-hidden="true">
+		<div class="testimonial" data-index="6" data-id="<?php echo $r->id ?>" aria-hidden="true">
 			<div class="quote-container">
 				<ul class="rate">
 					<?php
@@ -181,6 +190,7 @@ class FS_Testimonials {
 			<strong class="name"><?php echo $r->name ?></strong>
 		</div>
 		<?php
+		return ob_get_clean();
 	}
 }
 
