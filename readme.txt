@@ -8,7 +8,7 @@ Author URI: http://www.pootlepress.com
 Author: PootlePress
 Requires at least: 4.1.0
 Tested up to: 4.8.2
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -51,6 +51,11 @@ You can use this shortcode after replacing 999 with your plugin ID `[freemius-te
  * Initial release
 
 == Changelog ==
+
+= 1.1.0 =
+ * 2017-01-05
+ * Fix - Some reviews hidden in expanded compress mode
+ * Fix - Tooltips on hover over review title
 
 = 1.0.0 =
 * 2017-10-03

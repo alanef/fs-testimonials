@@ -2,7 +2,7 @@
 /*
 Plugin Name: Testimonials for Freemius
 Description: Shows plugins/theme testimonials from Freemius
-Version: 1.0.0
+Version: 1.1.0
 Plugin URI: https://pootlepress.com/freemius-testimonials
 Author: Pootlepress
 Author URI: https://pootlepress.com/
