@@ -53,7 +53,7 @@ You can use this shortcode after replacing 999 with your plugin ID `[freemius-te
 == Changelog ==
 
 = 1.1.0 =
- * 2017-01-05
+ * 2018-03-09
  * Fix - Some reviews hidden in expanded compress mode
  * Fix - Tooltips on hover over review title
 
