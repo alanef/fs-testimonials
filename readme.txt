@@ -7,7 +7,7 @@ Tags: freemius, testimonials, reviews, freemius api
 Author URI: http://www.pootlepress.com
 Author: PootlePress
 Requires at least: 4.1.0
-Tested up to: 4.8.2
+Tested up to: 5.0.0
 Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -33,6 +33,15 @@ Installing "Freemius testimonial" can be done either by searching for "Freemius 
 
 First you need to set your Freemius API credentials, this can be done in `WordPress admin area` > `Settings` > `General` > `Testimonials for Freemius – API credentials`
 After that, just use this shortcode **after changing 999 with your plugin/theme ID** `[freemius-testimonials plugin=999]`
+
+= How can I sort testimonials? =
+
+Testimonials can be sorted by their IDs. To get testimonial IDs, head over to the page which shows reviews, and add ``?fs-testimonial-ids` to the url.
+So for example, if our testimonials showing page is on `http://example.com/testimonials/` then we will change the URL so it looks like `http://example.com/testimonials/?fs-testimonial-ids`.
+This will display all testimonial IDs if you are logged in and have permission to edit posts on site.
+
+Then, we just add `order` parameter with comma separated list of testimonial IDs and reviews will appear in that order, reviews not in the list will appear at the end.
+Here is what the shortcode may look like `[freemius-testimonials plugin='999' order='295,349,241,290,227']` **change 999 with your plugin/theme ID AND 295,349,241,290,227 with your desired order**
 
 = How can I use that expandable drawer like thingy? =
 
