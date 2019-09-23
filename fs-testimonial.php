@@ -160,7 +160,12 @@ class FS_Testimonials {
 					$divs = [];
 					$i = 0;
 					foreach ( $testimonials as $r ) {
-						$divs[ $i ++ % 3 ] .= $this->testimonial_html( $r );
+						 $y = $i ++ % 3;
+					         if (! isset ($divs[ $y ])) {
+						    $divs[ $y ] = $this->testimonial_html( $r );
+                                                 } else {
+						 $divs[ $y ] .= $this->testimonial_html( $r );
+						 }
 					}
 
 					echo "<div>$divs[0]</div>";
