@@ -7,8 +7,8 @@ Tags: freemius, testimonials, reviews, freemius api
 Author URI: http://www.pootlepress.com
 Author: PootlePress
 Requires at least: 4.1.0
-Tested up to: 5.0.0
-Stable tag: 1.1.0
+Tested up to: 6.5
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -60,6 +60,9 @@ You can use this shortcode after replacing 999 with your plugin ID `[freemius-te
  * Initial release
 
 == Changelog ==
+= 1.2.0 =
+* remove font awesome
+* add updated freemius lib
 
 = 1.1.0 =
  * 2018-03-09
