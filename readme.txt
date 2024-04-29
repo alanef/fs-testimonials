@@ -61,7 +61,7 @@ You can use this shortcode after replacing 999 with your plugin ID `[freemius-te
 
 == Changelog ==
 = 1.2.0 =
-* remove font awesome
+* remove font awesome library replace with svg from fa
 * add updated freemius lib
 
 = 1.1.0 =
